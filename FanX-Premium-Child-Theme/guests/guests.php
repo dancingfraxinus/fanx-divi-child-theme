@@ -260,13 +260,13 @@ if ('project_tag' === $column ) {
 //**Type** 
 add_action('restrict_manage_posts', 'filter_guest_type_df');
 function filter_guest_type_df() {
-	global $typenow;
-	$post_type = 'guests';
+    global $typenow;
+    if ($typenow =='guests'){
 	$taxonomy  = 'type';
 	$selected      = isset($_GET[$taxonomy]) ? $_GET[$taxonomy] : '';
 		$info_taxonomy = get_taxonomy($taxonomy);
 		wp_dropdown_categories(array(
-			'show_option_all' => sprintf( __( 'Show all %s', 'textdomain' ), $info_taxonomy->label ),
+			'show_option_all' => sprintf( __( 'Show all %s', 'df' ), $info_taxonomy->label ),
 			'taxonomy'        => $taxonomy,
 			'name'            => $taxonomy,
 			'orderby'         => 'name',
@@ -274,7 +274,7 @@ function filter_guest_type_df() {
 			'show_count'      => true,
 			'hide_empty'      => true,
 		));
-	};
+	}};
 
 add_filter('parse_query', 'convert_type_id_df');
 function convert_type_id_df($query) {
@@ -292,8 +292,8 @@ function convert_type_id_df($query) {
 //**Guest List** 
 add_action('restrict_manage_posts', 'filter_guest_list_df');
 function filter_guest_list_df() {
-	global $typenow;
-	$post_type = 'guests';
+	 global $typenow;
+    if ($typenow =='guests'){
 	$taxonomy  = 'project_category';
 	$selected      = isset($_GET[$taxonomy]) ? $_GET[$taxonomy] : '';
 		$info_taxonomy = get_taxonomy($taxonomy);
@@ -306,7 +306,7 @@ function filter_guest_list_df() {
 			'show_count'      => true,
 			'hide_empty'      => true,
 		));
-	};
+	}};
 
 add_filter('parse_query', 'convert_guestlist_id_df');
 function convert_guestlist_id_df($query) {
@@ -324,8 +324,8 @@ function convert_guestlist_id_df($query) {
 //**Fandom** 
 add_action('restrict_manage_posts', 'filter_guest_fandom_df');
 function filter_guest_fandom_df() {
-	global $typenow;
-	$post_type = 'guests';
+	 global $typenow;
+    if ($typenow =='guests'){
 	$taxonomy  = 'project_tag';
 	$selected      = isset($_GET[$taxonomy]) ? $_GET[$taxonomy] : '';
 		$info_taxonomy = get_taxonomy($taxonomy);
@@ -338,7 +338,7 @@ function filter_guest_fandom_df() {
 			'show_count'      => true,
 			'hide_empty'      => true,
 		));
-	};
+	}};
 
 add_filter('parse_query', 'convert_fandom_id_df');
 function convert_fandom_id_df($query) {
