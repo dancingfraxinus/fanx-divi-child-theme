@@ -1,28 +1,28 @@
-<?php 
+<?php
 
-add_action( 'wp_enqueue_scripts', 'my_enqueue_assets' ); 
+add_action( 'wp_enqueue_scripts', 'my_enqueue_assets' );
 include('login-editor.php');
-//include('guest-portfolios.php');
+include('guests/panelists.php');
 include('white-label.php');
 include('events/events.php');
 include('guests/guests.php');
 include('guests/growtix.php');
 
-function my_enqueue_assets() { 
+function my_enqueue_assets() {
 
-    wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' ); 
+    wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
  wp_enqueue_style( 'child-style',
         get_stylesheet_directory_uri() . '/style.css',
         array( $parent_style ),
         wp_get_theme()->get('Version')
-    );	
+    );
 }
 
-//Theme Support 
+//Theme Support
 add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
 
 
-//Redirect Images to Post 
+//Redirect Images to Post
 add_action( 'template_redirect', 'wpsites_attachment_redirect' );
 function wpsites_attachment_redirect(){
 global $post;
@@ -33,10 +33,10 @@ if ( is_attachment() && isset($post->post_parent) && is_numeric($post->post_pare
     endif;
 }
 
-//Removes Default Image Linking 
+//Removes Default Image Linking
 function wpb_imagelink_setup() {
     $image_set = get_option( 'image_default_link_type' );
-     
+
     if ($image_set !== 'none') {
         update_option('image_default_link_type', 'none');
     }
@@ -60,7 +60,7 @@ function df_custom_columns( $columns ) {
     return $columns;
 }
 
-//**Post Admin Thumbnails 
+//**Post Admin Thumbnails
 add_action( 'manage_posts_custom_column' , 'df_custom_columns_data', 10, 2 );
 function df_custom_columns_data( $column, $post_id ) {
     switch ( $column ) {
@@ -86,15 +86,15 @@ function sitemap() {
         </div>';
     endforeach;
     $sitemap .= '</ul>';
-		
+
     return$sitemap;
 }
 add_shortcode('sitemap', 'sitemap');
 
 
-//Pages 
+//Pages
 function sitemapage(){
-    $sitemapage = ''; 
+    $sitemapage = '';
     $pages_args = array(
         'exclude' => '', /* ID of pages to be excluded, separated by comma */
         'post_type' => 'page',
@@ -107,14 +107,14 @@ function sitemapage(){
         $sitemapage .= '<li class="pages-list"><a href="' . get_page_link($page->ID) . '" rel="bookmark">' . $page->post_title . '</a></li>';
     endforeach;
     $sitemapage .= '</ul>';
-	
+
     return$sitemapage;
 }
 add_shortcode('sitemapage', 'sitemapage');
 
-//Footer Pages 
+//Footer Pages
 function sitemapfoot(){
-    $sitemapfoot = ''; 
+    $sitemapfoot = '';
     $pages_args = array(
         'exclude' => '', /* ID of pages to be excluded, separated by comma */
         'post_type' => 'page',
@@ -126,7 +126,7 @@ function sitemapfoot(){
         $sitemapfoot .= '<li class="pages-list"><a href="' . get_page_link($page->ID) . '" rel="bookmark">' . $page->post_title . '</a></li>';
     endforeach;
     $sitemapfoot .= '</ul>';
-	
+
     return$sitemapfoot;
 }
 add_shortcode('sitemapfoot', 'sitemapfoot');
@@ -142,21 +142,21 @@ function pa_portfolio_image_height($height) {
 }
 add_filter( 'et_pb_portfolio_image_width', 'pa_portfolio_image_width' );
 add_filter( 'et_pb_portfolio_image_height', 'pa_portfolio_image_height' );
- 
+
 
 //Security
 add_filter( 'jetpack_sso_require_two_step', '__return_true' ); //Google Auth for .com login
 
 
-// Remove Yoast Filter Dropdown 
+// Remove Yoast Filter Dropdown
  function disable_yoast_seo_metabox( $post_types ) {
    unset( $post_types['guests'] );
    return $post_types;
- }    
- add_filter( 'wpseo_accessible_post_types', 'disable_yoast_seo_metabox' ); 
+ }
+ add_filter( 'wpseo_accessible_post_types', 'disable_yoast_seo_metabox' );
 
 
 
 //Use When Needed:
-//remove_action('shutdown', 'wp_ob_end_flush_all', 1);  //Flush error 
+//remove_action('shutdown', 'wp_ob_end_flush_all', 1);  //Flush error
 flush_rewrite_rules(); //Flush Rules
