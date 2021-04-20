@@ -24,8 +24,7 @@ register_post_type( 'project',
 	'hierarchical' => true,
 	'menu_icon'    => 'dashicons-nametag',
 	'show_in_rest' => true,
-	'menu_position' => 11,
-	'taxonomies'  => array( 'project_category'. 'project_tag' ),	
+	'menu_position' => 6,
 	'query_var'    	=> true,
 	'show_ui'      => true,
 	'public'       => true,
@@ -33,8 +32,7 @@ register_post_type( 'project',
 	'rewrite'      => array( 'slug' => 'ppl', 'with_front' => true, 'pages' => true, 'feeds' => true,),
   	'supports'     => array('title', 'editor', 'thumbnail', 'excerpt', 'comments', 'revisions', 'custom-fields', 'page-attributes'),
 			)
-		);
-		};
+				);
 
 //TAXONOMIES   -- same as guest CPT
 
@@ -48,7 +46,7 @@ add_filter( 'enter_title_here', function( $title ) {
     }
 
     return $title;
-});
+} );
 
 
 //Help Tab in Guest Posts
@@ -76,3 +74,5 @@ add_action('admin_head', function() {
 
 // Use when needed
 flush_rewrite_rules();
+
+?>
