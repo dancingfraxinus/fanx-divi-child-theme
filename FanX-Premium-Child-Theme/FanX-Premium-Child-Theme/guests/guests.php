@@ -25,6 +25,7 @@ add_action( 'init', function() {
 		'menu_icon' => 'dashicons-groups',
         'labels'  => $labels,
 		'supports' => $supports,
+    'taxonomies' => array('category', 'post_tag', 'project_category', 'project_tag', 'type' ),
 		'has_archive' => true,
         'hierarchical' => true,
         'rewrite'    => $rewrite,
