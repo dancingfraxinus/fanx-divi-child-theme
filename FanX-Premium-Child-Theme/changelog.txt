@@ -1,6 +1,0 @@
---->> CHANGELOG <<---
-
-20.04.21 --->>
-- Created Changelog for FanX Theme
-- Cleaned up theme. removing unused Custom Post Type files.
-- Compiled all Taxonomies to be accessible to  Guest and People post types for optimal index page options when using Divi Plugins.

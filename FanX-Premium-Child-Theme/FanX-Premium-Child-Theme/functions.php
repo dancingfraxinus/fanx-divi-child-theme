@@ -4,6 +4,7 @@ add_action( 'wp_enqueue_scripts', 'my_enqueue_assets' );
 include('login-editor.php');
 include('guests/panelists.php');
 include('white-label.php');
+include('updates.php');
 include('events/events.php');
 include('guests/guests.php');
 include('guests/growtix.php');

@@ -25,6 +25,25 @@ hr{
 }
 /** -- END TYPOGRAPHY -- **/
 
+/** Accessability Buttons **/
+.a11y-toolbar{
+	top: 85%; 
+	left: 0; 
+}
+.a11y-toolbar ul li button{
+	background: #000000; 
+	border: 0px; 
+}
+.a11y-toolbar button{
+	color: #ffffff !important;
+}
+.a11y-toolbar ul li button:hover{
+	background: #000000; 
+	border: 0px; 
+}
+/** --END Accessability Buttons-- **/
+
+
 /** -- DIVI MODULES --**/
 
 /** --Text Modules-- **/
@@ -153,7 +172,7 @@ padding: 3px;
 
 
 /** - DP Premium Modules -- **/ 
-/** -- DP Blog Module -- **/ 
+/** -- DP Blog Portfolio Module -- **/ 
 .et_pb_portfolio_list .dp_portfolio_item_right{
 	width: 100%; 
 }
@@ -162,7 +181,14 @@ padding: 3px;
 }
 
 /** --END DP Blog Module -- **/
+
+/** OWL CAROUSEL **/ 
+.owl-stage{
+	height: auto !important; 
+}
+/** --END OWL CAROUSEL -- **/ 
 /** - END DP Premium Modules -- **/
+
 
 
 
