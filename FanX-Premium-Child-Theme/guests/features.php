@@ -20,14 +20,15 @@ add_action( 'init', function() {
 		'show_in_nav_menus' => true,
         'show_in_admin_bar' => true,
         'show_in_menu' => true,
-		'menu-position' => 4,
+		'menu-position' => 2,
         'show_ui' => true,
-		'menu_icon' => 'dashicons-buddycons-activity',
+		'menu_icon' => 'dashicons-buddicons-activity',
         'labels'  => $labels,
 		'supports' => $supports,
 		'has_archive' => true,
         'hierarchical' => true,
         'rewrite'    => $rewrite,
+
     ];
 
     register_post_type( $type, $arguments);
@@ -220,6 +221,17 @@ function convert_featurecat_id_df($query) {
 		$q_vars[$taxonomy] = $term->slug;
 	}
 };
+
+//Redirect single view pages to main features archive page
+
+add_action( 'template_redirect', 'features_redirect_post_df' );
+
+function features_redirect_post_df() {
+  if ( is_singular( 'features' ) ) {
+    wp_redirect( home_url(), 301 );
+    exit;
+  }
+}
 
 
 //USE WHEN NEEDED:

@@ -1,5 +1,5 @@
 <?php
-//Theme Support 
+//Theme Support
 add_theme_support('post-thumbnails');
 
 //ACTIONS
@@ -8,7 +8,7 @@ add_action( 'init', function() {
 	 $labels = xcompile_post_type_labels('Event', 'Events');
 	 $supports = ['title', 'editor', 'revisions', 'page-attributes', 'thumbnail', 'custom fields', 'excerpt', 'author'];
 	 $rewrite = array( 'slug' => 'event', 'with_front' => true, 'pages' => true, 'feeds' => true,);
-	 
+
 
 //ARGUEMENTS
     $arguments = [
@@ -20,7 +20,7 @@ add_action( 'init', function() {
 		'show_in_nav_menus' => true,
         'show_in_admin_bar' => true,
         'show_in_menu' => true,
-		'menu-position' => 5,
+		'menu-position' => 15,
         'show_ui' => true,
 		'menu_icon' => 'dashicons-calendar-alt',
         'labels'  => $labels,
@@ -29,68 +29,68 @@ add_action( 'init', function() {
         'hierarchical' => false,
         'rewrite'    => $rewrite,
     ];
-	
+
     register_post_type( $type, $arguments);
-	
-//TAXONOMIES 
-register_taxonomy( 'event_category', 
+
+//TAXONOMIES
+register_taxonomy( 'event_category',
 	array( 'event' ),
    array(
 	'labels' => array(
-	'name'          => __( 'Event Category', 'df' ), 
-	'singular_name' => __( 'Event Category', 'df' ), 
+	'name'          => __( 'Event Category', 'df' ),
+	'singular_name' => __( 'Event Category', 'df' ),
 	'search_items' => __( 'Event Category Search', 'df' ),
 	'add_new_item' =>__('Add New Event Category', 'df'),
-	'new_item_name' => __( 'New Event Category Name' ),	
+	'new_item_name' => __( 'New Event Category Name' ),
 	'edit_item'	=> __( 'Edit Event Cateogry', 'df'),
-	'update_item' => __( 'Update Event Category' ),	
+	'update_item' => __( 'Update Event Category' ),
 	'all_items' => __( 'All Event Categories', 'df' ),
-	'parent' => __( '' ), 
-  
-		), 
-	'has_archive'  			 => true,   
-    'show_admin_column' 	 => true, 
+	'parent' => __( '' ),
+
+		),
+	'has_archive'  			 => true,
+    'show_admin_column' 	 => true,
     'show_in_rest'           => true,
-    'show_ui'      			 => true,    
-    'hierarchical' 			 => true,   
-	'query_var'    			 => true,    
-	'public'      			 => true,  
-	'publicly_queryable'     => true,    
+    'show_ui'      			 => true,
+    'hierarchical' 			 => true,
+	'query_var'    			 => true,
+	'public'      			 => true,
+	'publicly_queryable'     => true,
 	'rewrite' 		=> array('slug' => 'events', 'with_front' => false ),
-	'supports'     => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes'),   
+	'supports'     => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes'),
 			)
 	);
 
-register_taxonomy( 'event_tag', 
-	array( 'event' ), 
+register_taxonomy( 'event_tag',
+	array( 'event' ),
 	array(
 	  	'labels' => array(
 	  	'name' 			=> __( 'Event Tags', 'df' ),
     	'singular_name' => __( 'Event Tag', 'df' ),
 		'search_items' 	=> __( 'Search Event Tags', 'df' ),
 		'add_new_item'          => __( 'Add New Event Tag', 'df' ),
-		'new_item_name' => __( 'New Event Tag Name' ),	
-		'edit_item'	=> __( 'Edit Event Tag', 'df'),	
-		'all_items' 	=> __( 'All Event Tags', 'df' ),		
+		'new_item_name' => __( 'New Event Tag Name' ),
+		'edit_item'	=> __( 'Edit Event Tag', 'df'),
+		'all_items' 	=> __( 'All Event Tags', 'df' ),
 	  ),
 		'has_archive'           => true,
-    	'show_admin_column' 	=> true,    
+    	'show_admin_column' 	=> true,
         'show_ui'      			=> true,
-        'show_in_rest'          => true,  
-        'query_var'   		 	=> true, 
-		'public'       			=> true,  
-		'publicly_queryable'    => true, 
+        'show_in_rest'          => true,
+        'query_var'   		 	=> true,
+		'public'       			=> true,
+		'publicly_queryable'    => true,
 		'rewrite' 		=> array('slug' => 'event_type', 'with_front' => false ),
 		'supports'     => array('title', 'editor', 'thumbnail', 'custom-fields', 'page-attributes'),
-		) 
-				 );	
+		)
+				 );
 });
 
-//CUSTOM TAXONOMIES 
+//CUSTOM TAXONOMIES
 add_action( 'init', 'create_venue_taxonomy', 0 );
- 
+
 function create_venue_taxonomy() {
-  
+
   $labels = array(
     'name' => _x( 'Venue', 'taxonomy general name' ),
     'singular_name' => _x( 'Venue', 'taxonomy singular name' ),
@@ -99,15 +99,15 @@ function create_venue_taxonomy() {
     'all_items' => __( 'All Venues' ),
     'parent_item' => null,
     'parent_item_colon' => null,
-    'edit_item' => __( 'Edit Venue' ), 
+    'edit_item' => __( 'Edit Venue' ),
     'update_item' => __( 'Update Venue' ),
     'add_new_item' => __( 'Add New Venue' ),
     'new_item_name' => __( 'New Venue Name' ),
     'add_or_remove_items' => __( 'Add or remove venues' ),
     'choose_from_most_used' => __( 'Choose from the most used venues' ),
     'menu_name' => __( 'Venues' ),
-  ); 
-  
+  );
+
   register_taxonomy('venue','event',
 	array(
     'hierarchical'          => true,
@@ -193,19 +193,19 @@ function xcompile_post_type_labels($singular = 'Post', $plural = 'Posts') {
     ];
 }
 
-// EVENT INDEX - DP Blog Module 
+// EVENT INDEX - DP Blog Module
 function dp_ppp_custom_query_function() {
     return array(
-    'post_type' => 'event',  
+    'post_type' => 'event',
     'orderby'  => 'custom_query','when',
-    'order' => 'asc', 
+    'order' => 'asc',
     'posts_number' => '12',
-    'taxonomy' => 'current', 
-  );   
+    'taxonomy' => 'current',
+  );
 }
- 
+
 add_filter('dp_ppp_custom_query_args', 'dp_ppp_custom_query_function');
-           
+
 
 //HELP TAB
 add_action('admin_head', function() {
@@ -271,5 +271,5 @@ if ($expireTransient = get_transient($post->ID) === false) {
 
 
 //Use When Needed:
-//remove_action('shutdown', 'wp_ob_end_flush_all', 1);  //Flush error 
+//remove_action('shutdown', 'wp_ob_end_flush_all', 1);  //Flush error
 //flush_rewrite_rules(); //Flush Rules

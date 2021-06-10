@@ -24,20 +24,17 @@ register_post_type( 'project',
 	'hierarchical' => true,
 	'menu_icon'    => 'dashicons-nametag',
 	'show_in_rest' => true,
-	'menu_position' => 11,
+	'menu_position' => 20,
 	'query_var'    => true,
 	'show_ui'      => true,
-	//'taxonomies'   => array( '' ),	
+	//'taxonomies'   => array( '' ),
 	'public'       => true,
 	'publicly_queryable'       => true,
-	'rewrite'      => array( 'slug' => 'ppl', 'with_front' => true, 'pages' => true, 'feeds' => true,),
+	'rewrite'      => array( 'slug' => 'ppl', 'with_front' => true, 'pages' => false, 'feeds' => true,),
   	'supports'     => array('title', 'editor', 'thumbnail', 'excerpt', 'comments', 'revisions', 'custom-fields', 'page-attributes'),
 			)
 		);
 		};
-
-//TAXONOMIES   -- same as guest CPT
-
 
 //FILTERS - Guest Title
 add_filter( 'enter_title_here', function( $title ) {
@@ -72,6 +69,17 @@ add_action('admin_head', function() {
 
     $screen->add_help_tab( $args );
 });
+
+//Redirect single view pages to main panelist archive page
+
+add_action( 'template_redirect', 'project_redirect_post_df' );
+
+function project_redirect_post_df() {
+  if ( is_singular( 'project' ) ) {
+    wp_redirect( home_url(), 301 );
+    exit;
+  }
+}
 
 
 // Use when needed
