@@ -60,7 +60,7 @@ register_taxonomy( 'feat_cat',
 	'rewrite' 		=> array('slug' => 'category', 'with_front' => false ),
 	'supports'     => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes'),
 			)
-	);
+	});
 
 //FILTERS --Feature Title
 add_filter( 'enter_title_here', function( $title ) {
@@ -255,3 +255,4 @@ function convert_fandom_id_df($query) {
 //USE WHEN NEEDED:
 //remove_action('shutdown', 'wp_ob_end_flush_all', 1);  //Flush error
 flush_rewrite_rules(); //Flush Rules
+?>
