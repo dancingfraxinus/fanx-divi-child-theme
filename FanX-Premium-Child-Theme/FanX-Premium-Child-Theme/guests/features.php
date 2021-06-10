@@ -60,7 +60,9 @@ register_taxonomy( 'feat_cat',
 	'rewrite' 		=> array('slug' => 'category', 'with_front' => false ),
 	'supports'     => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes'),
 			)
-	});
+	);
+
+});
 
 //FILTERS --Feature Title
 add_filter( 'enter_title_here', function( $title ) {
@@ -212,38 +214,6 @@ function convert_featurecat_id_df($query) {
 	global $pagenow;
 	$post_type = 'features';
 	$taxonomy  = 'feat_cat';
-	$q_vars    = &$query->query_vars;
-	if ( $pagenow == 'edit.php' && isset($q_vars['post_type']) && $q_vars['post_type'] == $post_type && isset($q_vars[$taxonomy]) && is_numeric($q_vars[$taxonomy]) && $q_vars[$taxonomy] != 0 ) {
-		$term = get_term_by('id', $q_vars[$taxonomy], $taxonomy);
-		$q_vars[$taxonomy] = $term->slug;
-	}
-};
-
-
-//**Fandom**
-add_action('restrict_manage_posts', 'filter_guest_fandom_df');
-function filter_guest_fandom_df() {
-	 global $typenow;
-    if ($typenow =='guests'){
-	$taxonomy  = 'project_tag';
-	$selected      = isset($_GET[$taxonomy]) ? $_GET[$taxonomy] : '';
-		$info_taxonomy = get_taxonomy($taxonomy);
-		wp_dropdown_categories(array(
-			'show_option_all' => sprintf( __( 'Show all %s', 'textdomain' ), $info_taxonomy->label ),
-			'taxonomy'        => $taxonomy,
-			'name'            => $taxonomy,
-			'orderby'         => 'name',
-			'selected'        => $selected,
-			'show_count'      => true,
-			'hide_empty'      => true,
-		));
-	}};
-
-add_filter('parse_query', 'convert_fandom_id_df');
-function convert_fandom_id_df($query) {
-	global $pagenow;
-	$post_type = 'guests';
-	$taxonomy  = 'project_tag';
 	$q_vars    = &$query->query_vars;
 	if ( $pagenow == 'edit.php' && isset($q_vars['post_type']) && $q_vars['post_type'] == $post_type && isset($q_vars[$taxonomy]) && is_numeric($q_vars[$taxonomy]) && $q_vars[$taxonomy] != 0 ) {
 		$term = get_term_by('id', $q_vars[$taxonomy], $taxonomy);
