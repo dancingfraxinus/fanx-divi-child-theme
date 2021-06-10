@@ -8,6 +8,7 @@ include('updates.php');
 include('events/events.php');
 include('guests/guests.php');
 include('guests/growtix.php');
+include('guests/features.php');
 
 function my_enqueue_assets() {
 
