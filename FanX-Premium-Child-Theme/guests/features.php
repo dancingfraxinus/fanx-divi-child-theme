@@ -228,7 +228,7 @@ add_action( 'template_redirect', 'features_redirect_post_df' );
 
 function features_redirect_post_df() {
   if ( is_singular( 'features' ) ) {
-    wp_redirect( home_url(), 301 );
+    wp_redirect( '/features', 301 );
     exit;
   }
 }

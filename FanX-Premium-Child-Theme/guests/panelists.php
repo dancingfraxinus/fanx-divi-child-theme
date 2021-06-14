@@ -76,7 +76,7 @@ add_action( 'template_redirect', 'project_redirect_post_df' );
 
 function project_redirect_post_df() {
   if ( is_singular( 'project' ) ) {
-    wp_redirect( home_url(), 301 );
+    wp_redirect( '/ppl', 301 );
     exit;
   }
 }
