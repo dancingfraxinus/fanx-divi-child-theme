@@ -3,7 +3,7 @@
 function rc_mdm_register_widgets() {
 	global $wp_meta_boxes;
 
-	wp_add_dashboard_widget('widget_freelanceswitch', __('Latest FanX Theme Updates', 'rc_mdm'), 'rc_mdm_create_my_rss_box');
+	wp_add_dashboard_widget('widget_themeupdates', __('Latest FanX Theme Updates', 'rc_mdm'), 'rc_mdm_create_my_rss_box');
 }
 add_action('wp_dashboard_setup', 'rc_mdm_register_widgets');
 //RSS Feed
@@ -36,7 +36,7 @@ echo '<p><i>All updates to the FanX Premium Child Theme code are logged here whe
 		// Display the container
 		echo '<div class="rss-widget">';
 		echo '<strong>'.$rss_title.'</strong>';
-		echo '<hr style="border: 0; background-color: #DFDFDF; height: 1px;">';
+		echo '<hr style="border: 0; background-color: green; height: 1px;">';
 
 		// Starts items listing within <ul> tag
 		echo '<ul>';
@@ -77,7 +77,20 @@ echo '<p><i>All updates to the FanX Premium Child Theme code are logged here whe
 
 	endforeach; // End foreach feed
 }
+?>
+<style>
+ #widget_themeupdates{
+	 background: black;
+	 color: limegreen;
+	 font-family: 'Courier New', monospace;
+ }
 
+#widget_themeupdates h2.hndle.ui-sortable-handle, #widget_themeupdates a:link{
+	color: green;
+	font-family: 'Courier New', monospace;
+}
+</style>
+<?php
 
 //Use When Needed:
 //remove_action('shutdown', 'wp_ob_end_flush_all', 1);  //Flush error
