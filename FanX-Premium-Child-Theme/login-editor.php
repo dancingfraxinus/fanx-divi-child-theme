@@ -2,8 +2,6 @@
 
 if (!defined('ABSPATH')) die();
 
-
-
 // Login Editor
 function ds_register_login_editor($wp_customize) {
 
@@ -493,7 +491,7 @@ $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'ds_log
 
     ));
 
-    
+
 
     $wp_customize->add_setting('ds_login_text_color', array(
 
@@ -545,11 +543,11 @@ $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'ds_log
 
     )));
 
-    
+
 
     }
 
-    
+
 
 add_action('customize_register', 'ds_register_login_editor');
 
@@ -639,7 +637,7 @@ body.login {
 
     }
 
-    
+
 
 body.login #login h1 a {
 
@@ -875,6 +873,6 @@ function ds_login_login_logo_url_title() { $title = get_bloginfo( 'name', 'displ
 
 add_filter( 'login_headertitle', 'ds_login_login_logo_url_title' );
 
-
-
-?>
+//Use When Needed:
+//remove_action('shutdown', 'wp_ob_end_flush_all', 1);  //Flush error
+flush_rewrite_rules(); //Flush Rules
