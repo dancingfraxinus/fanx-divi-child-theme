@@ -77,20 +77,6 @@ echo '<p><i>All updates to the FanX Premium Child Theme code are logged here whe
 
 	endforeach; // End foreach feed
 }
-?>
-<style>
- #widget_themeupdates{
-	 background: black;
-	 color: limegreen;
-	 font-family: 'Courier New', monospace;
- }
-
-#widget_themeupdates h2.hndle.ui-sortable-handle, #widget_themeupdates a:link{
-	color: green;
-	font-family: 'Courier New', monospace;
-}
-</style>
-<?php
 
 //Use When Needed:
 //remove_action('shutdown', 'wp_ob_end_flush_all', 1);  //Flush error

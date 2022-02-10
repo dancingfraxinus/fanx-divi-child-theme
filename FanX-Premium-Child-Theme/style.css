@@ -8,6 +8,48 @@
  Version:        2.0
 */
 
-/* --->  You can find all custom CSS for the Divi Theme in the the Theme Customizer or under the General settings Tab in Divi Theme Options.
+/* Black Background */
+body{
+	background-color: black;
+}
+#main-content{
+	background-color: transparent !important;
+}
+.page-container{
+	overflow-y: default !important;
+}
 
-*/
+h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: normal;
+}
+
+/* --- Rainbow Track Style Scrollbar --*/
+*::-webkit-scrollbar {
+  background: linear-gradient(0deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border-radius: 20px;
+  border: 2px solid white;
+}
+
+/** Accessability Buttons **/
+.a11y-toolbar{
+	top: 75%;
+	left: 0;
+}
+.a11y-toolbar ul li button{
+	background: #000000;
+	border: 0px;
+}
+
+.a11y-toolbar button{
+	color: #ffffff !important;
+}
+
+.a11y-toolbar ul li button:hover{
+	background: #000000;
+	border: 0px;
+	transform: scale(1.25);
+}
+/** --END Accessability Buttons-- **/
