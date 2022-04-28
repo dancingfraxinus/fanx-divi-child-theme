@@ -18,9 +18,9 @@ body{
 .page-container{
 	overflow-y: default !important;
 }
-
+/* Break Words in Heading */
 h1, h2, h3, h4, h5, h6 {
-    overflow-wrap: normal;
+    overflow-wrap: break-word;
 }
 
 /* --- Rainbow Track Style Scrollbar --*/
